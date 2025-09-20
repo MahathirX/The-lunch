@@ -1,0 +1,31 @@
+{
+    "name": "nwidart/pagemultiimage",
+    "description": "",
+    "authors": [
+        {
+            "name": "Nicolas Widart",
+            "email": "n.widart@gmail.com"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [],
+            "aliases": {
+
+            }
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Modules\\PageMultiImage\\": "",
+            "Modules\\PageMultiImage\\App\\": "app/",
+            "Modules\\PageMultiImage\\Database\\Factories\\": "database/factories/",
+            "Modules\\PageMultiImage\\Database\\Seeders\\": "database/seeders/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Modules\\PageMultiImage\\Tests\\": "tests/"
+        }
+    }
+}

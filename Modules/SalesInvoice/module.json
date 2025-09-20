@@ -1,0 +1,11 @@
+{
+    "name": "SalesInvoice",
+    "alias": "salesinvoice",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\SalesInvoice\\App\\Providers\\SalesInvoiceServiceProvider"
+    ],
+    "files": []
+}

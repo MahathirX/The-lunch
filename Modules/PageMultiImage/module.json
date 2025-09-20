@@ -1,0 +1,11 @@
+{
+    "name": "PageMultiImage",
+    "alias": "pagemultiimage",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\PageMultiImage\\App\\Providers\\PageMultiImageServiceProvider"
+    ],
+    "files": []
+}

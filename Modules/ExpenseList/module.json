@@ -1,0 +1,11 @@
+{
+    "name": "ExpenseList",
+    "alias": "expenselist",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\ExpenseList\\App\\Providers\\ExpenseListServiceProvider"
+    ],
+    "files": []
+}

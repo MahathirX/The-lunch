@@ -1,0 +1,35 @@
+<?php
+
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Backend\Admin\DashboardController;
+
+// Group Route
+Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['auth','is_verify']], function () {
+    //------------------------ Dashboard -----------------------//
+    Route::prefix('dashboard')->name('dashboard.')->group(function () {
+        Route::get('/', [DashboardController::class, 'dashboard'])->name('index');
+        Route::get('/create', [DashboardController::class, 'create'])->name('create');
+        Route::get('/pay-bill-customer-supplier/{id}/{role}', [DashboardController::class, 'payBillCustomerSupplier'])->name('pay.bill.customer.supplier');
+        Route::post('/pay-bill-customer-supplier-store', [DashboardController::class, 'payBillCustomerSupplierStore'])->name('pay.bill.customer.supplier.store');
+        Route::post('/customer-supplier', [DashboardController::class, 'customerSupplier'])->name('customer.supplier.store');
+        Route::get('/pay-bill/{role}', [DashboardController::class, 'payBill'])->name('pay.bill');
+        Route::post('/pay-bill-store', [DashboardController::class, 'payBillStore'])->name('pay.bill.store');
+        Route::get('/casebox-amount-check', [DashboardController::class, 'cashboxAmountCheck'])->name('casebox.amount.check');
+        Route::post('/order-chart-count', [DashboardController::class, 'dashboardOrderChartCount'])->name('order.chart.count');
+        Route::post('/products-chart-count', [DashboardController::class, 'dashboardProductsChartCount'])->name('products.chart.count');
+        Route::get('/order-riview', [DashboardController::class, 'orderReview'])->name('order.review');
+        Route::get('/notification-count',[DashboardController::class,'dashboardNotificationsCount'])->name('notification.count');
+        Route::get('/notification-view',[DashboardController::class,'notificationsView'])->name('notification.view');
+        Route::get('/notification-read/{id}',[DashboardController::class,'notificationsRead'])->name('notification.read');
+        Route::get('/notification-delete/{id}',[DashboardController::class,'notificationsDelete'])->name('notification.delete');
+        Route::get('/mark-as-read',[DashboardController::class,'markAsRead'])->name('mark.as.read');
+        Route::get('/profile',[DashboardController::class,'profile'])->name('profile');
+        Route::get('/password-change',[DashboardController::class,'passwordChange'])->name('password.change');
+        Route::get('/mail-update',[DashboardController::class,'mailUpdate'])->name('mail.update');
+        Route::post('/mail-store',[DashboardController::class,'mailStore'])->name('mail.store');
+    });
+});
+
+
+

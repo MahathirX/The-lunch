@@ -1,0 +1,9 @@
+:root{
+
+    background-color: red;
+}
+
+.header-top {
+	background: var(--ba);
+	color: #fff;
+}

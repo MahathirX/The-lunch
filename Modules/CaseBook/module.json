@@ -1,0 +1,11 @@
+{
+    "name": "CaseBook",
+    "alias": "casebook",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\CaseBook\\App\\Providers\\CaseBookServiceProvider"
+    ],
+    "files": []
+}

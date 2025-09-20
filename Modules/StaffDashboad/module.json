@@ -1,0 +1,11 @@
+{
+    "name": "StaffDashboad",
+    "alias": "staffdashboad",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\StaffDashboad\\App\\Providers\\StaffDashboadServiceProvider"
+    ],
+    "files": []
+}

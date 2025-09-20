@@ -1,0 +1,172 @@
+@extends('layouts.app')
+@section('title', $title)
+@push('styles')
+    <link rel="stylesheet" href="{{ asset('backend/assets/css/image-style.css') }}">
+    <link rel="stylesheet" href="{{ asset('backend/assets/css/image-gallary.css') }}">
+@endpush
+@section('content')
+    <section>
+        <div class="card">
+            <div class="card-heading">
+                <h3 class="p-2">{{ __f('Supplier Create Title') }}</h3>
+            </div>
+            <div class="card-body">
+                <form id="supplierForm" action="{{ route('admin.supplier.store') }}" method="POST"
+                    enctype="multipart/form-data">
+                    @csrf
+
+                    <div class="row ">
+                        <div class="col-12 col-md-4 mb-3">
+                            <x-form.checkbox labelName="{{ __f('Both Customer and Supplier Title') }}" name="check_supplier"
+                                errorName="check_supplier" class="py-2" value="1">
+                            </x-form.checkbox>
+                        </div>
+
+                        <div class="col-12 col-md-4 d-none  group mb-3">
+                            <x-form.selectbox class="form-control py-2" name="group"
+                                labelName="{{ __f('Customer Group Title') }}" errorName="group">
+                                <option value="0">{{ __f('Customer General Group Title') }}</option>
+                                <option value="1">{{ __f('Customer Distributer Group Title') }}</option>
+                                <option value="2">{{ __f('Customer Reseller Group Title') }}</option>
+                            </x-form.selectbox>
+                        </div>
+                        <div class="col-12 col-md-4 hidden-field mb-3" id="supplierField">
+                            <x-form.textbox labelName="{{ __f('Supplier Name Label Title') }}" name="name" required="required"
+                                placeholder="{{ __f('Supplier Name Placeholder') }}" errorName="name" class="py-2"
+                                value="{{ old('name') }}">
+                            </x-form.textbox>
+                        </div>
+
+
+                        <x-form.textbox labelName="{{ __f('Company Name Label Title') }}" required="required" parantClass="col-12 col-md-4 mb-3" name="company_name"
+                           placeholder="{{ __f('Company Name Placeholder') }}" errorName="company_name" class="py-2"
+                            value="{{ old('company_name') }}">
+                        </x-form.textbox>
+
+                        <x-form.textbox  labelName="{{ __f('Phone Number Label Title') }}"  required="required" parantClass="col-12 col-md-4 mb-3"  name="phone" placeholder="{{ __f('Phone Number Placeholder') }}"   errorName="phone" class="py-2"  value="{{ old('phone') }}" type="tel">
+                        </x-form.textbox>
+
+                        <x-form.textbox labelName="{{ __f('Email Label Title') }}" parantClass="col-12 col-md-4 mb-3" name="email"
+                           placeholder="{{ __f('Email Placeholder') }}" errorName="email" class="py-2"
+                            value="{{ old('email') }}">
+                        </x-form.textbox>
+
+                        <x-form.textbox
+                        labelName="{{ __f('Supplier Address Label Title') }}" required="required" parantClass="col-12 col-md-4 mb-3"  name="address" placeholder="{{ __f('Supplier Address Placeholder') }}"  errorName="address"  class="py-2" value="{{ old('address') }}" type="text">
+                        </x-form.textbox>
+
+                        <!-- Vat Number Input -->
+                        <div class="col-12 col-md-4 mb-3">
+                            <x-form.textbox labelName="{{ __f('Vat Number Label Title') }}" name="vat"
+                                placeholder="{{ __f('Vat Number Placeholder') }}" errorName="vat" class="py-2"
+                                value="{{ old('vat') }}">
+                            </x-form.textbox>
+                        </div>
+
+                        <x-form.textbox   labelName="{{ __f('City Label Title') }}"  parantClass="col-12 col-md-4 mb-3"  name="city"  placeholder="{{ __f('City Placeholder') }}"  errorName="city" class="py-2"  value="{{ old('city') }}">
+                        </x-form.textbox>
+
+                        <x-form.textbox  labelName="{{ __f('State Label Title') }}" parantClass="col-12 col-md-4 mb-3"  name="state" placeholder="{{ __f('State Placeholder') }}" errorName="state"  class="py-2" value="{{ old('state') }}">
+                        </x-form.textbox>
+                            <x-form.textbox labelName="{{ __f('Postal Code Label Title') }}" parantClass="col-12 col-md-4 mb-3" name="postal_code"
+                            placeholder="{{ __f('Postal Code Placeholder') }}" errorName="postal_code" class="py-2"
+                            value="{{ old('postal_code') }}">
+                        </x-form.textbox>
+
+                        <x-form.textbox  labelName="{{ __f('Country Label Title') }}"  parantClass="col-12 col-md-4 mb-3"  name="country" placeholder="{{ __f('Country Placeholder') }}" errorName="country" class="py-2" value="{{ old('country') }}">
+                        </x-form.textbox>
+                        <x-form.selectbox parantClass="col-12 col-md-4 mb-3" class="form-control py-2" name="status" required="required"
+                             labelName="{{ __f('Status Title') }}">
+                            <option value="1">{{ __f('Status Publish Title') }}</option>
+                            <option value="0">{{ __f('Status Pending Title') }}</option>
+                        </x-form.selectbox>
+                        <x-form.textbox  labelName="{{ __f('Previous Due Title') }}"  parantClass="col-12 col-md-4 mb-3"  name="previous_due" placeholder="{{ __f('Previous Due Placeholder') }}" errorName="previous_due" type="number" class="py-2" value="{{ old('previous_due') }}">
+                        </x-form.textbox>
+                        <div class="col-12 col-md-4">
+                            <label class="text-dark font-weight-medium">{{ __f('Image Title') }}</label>
+                            <div>
+                                <label class="first__picture" for="first__image" tabindex="0">
+                                    <span class="picture__first"></span>
+                                </label>
+                                <input type="file" name="photo" id="first__image">
+                                <span class="text-danger error-text photo-error"></span>
+                            </div>
+                      </div>
+                    </div>
+                    <div class="d-flex justify-content-end align-items-center mt-2">
+                        <button type="submit" class="btn btn-primary">
+                            <div class="spinner-border text-light d-none" role="status">
+                                <span class="sr-only">Loading...</span>
+                            </div>{{ __f('Submit Title') }}
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+@endsection
+@push('scripts')
+<script>
+    $(function() {
+        ImagePriviewInsert('first__image', 'picture__first', '{{ __f("Choose Supplier Image Title") }}');
+    });
+</script>
+    <script>
+        $(document).ready(function() {
+            @if(Auth::check() && Auth::user()->role_id == 3)
+                const projectRedirectUrl = "{{ route('staff.supplier.index') }}";
+            @else
+                const projectRedirectUrl = "{{ route('admin.supplier.index') }}";
+            @endif
+            $('#supplierForm').on('submit', function(e) {
+                e.preventDefault();
+                $('.spinner-border').removeClass('d-none');
+                $('.error-text').text('');
+                let formData = new FormData(this);
+                $.ajax({
+                    url: $(this).attr('action'),
+                    method: 'POST',
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    success: function(res) {
+                        if (res.status == 'success') {
+                            flashMessage(res.status, res.message);
+                            setTimeout(() => {
+                                window.location.href = projectRedirectUrl;
+                            }, 100);
+                        }
+                    },
+                    error: function(xhr) {
+                    if (xhr.status === 422) {
+                        $('.spinner-border').addClass('d-none');
+                        let errors = xhr.responseJSON.errors;
+                        $.each(errors, function(key, value) {
+                            $('.' + key + '-error').text(value[0]);
+                        });
+                    } else {
+                        $('.spinner-border').addClass('d-none');
+                        if (xhr.responseJSON && xhr.responseJSON.message) {
+                            alert(xhr.responseJSON.message);
+                        } else {
+                            alert('An unexpected error occurred.');
+                        }
+                    }
+                }
+
+                });
+            });
+        });
+
+        // input field show hide
+        $(document).ready(function(){
+            $('input[name="check_supplier"]').change(function(){
+                if ($(this).is(':checked')) {
+                    $('.group').removeClass('d-none')
+                }else {
+                    $('.group').addClass('d-none');
+                }
+            })
+        })
+    </script>
+@endpush

@@ -1,0 +1,11 @@
+{
+    "name": "ProductTag",
+    "alias": "producttag",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\ProductTag\\App\\Providers\\ProductTagServiceProvider"
+    ],
+    "files": []
+}
